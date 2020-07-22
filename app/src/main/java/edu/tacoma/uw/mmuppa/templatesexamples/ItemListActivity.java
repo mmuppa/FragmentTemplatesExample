@@ -13,10 +13,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -70,6 +73,24 @@ public class ItemListActivity extends AppCompatActivity {
         View recyclerView = findViewById(R.id.item_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_item_list, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.about_id) {
+            Toast.makeText(this, "Clicked about", Toast.LENGTH_SHORT)
+                    .show();
+        } else if (item.getItemId() == R.id.help) {
+            Toast.makeText(this, "Clicked help", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
